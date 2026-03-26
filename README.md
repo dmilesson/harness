@@ -35,11 +35,13 @@ Phase 6: 검증 및 테스트
 
 ### 마켓플레이스 등록 후 설치
 
+#### 마켓플레이스 추가
 ```shell
-# 마켓플레이스 추가
 /plugin marketplace add revfactory/harness
+```
 
-# 플러그인 설치
+#### 플러그인 설치
+```shell
 /plugin install harness@harness
 ```
 
