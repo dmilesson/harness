@@ -1,52 +1,59 @@
 # Changelog
 
-이 프로젝트는 [Semantic Versioning](https://semver.org/)을 따릅니다.
+This project follows [Semantic Versioning](https://semver.org/).
+
+## [Unreleased]
+
+### Changed
+
+- Translated all skill files from Korean to English: `SKILL.md`, all 6 reference documents, `CHANGELOG.md`, and plugin metadata (`plugin.json`, `marketplace.json`)
+- Added `CLAUDE.md` to the repository root with plain-English installation and usage documentation
 
 ## [1.1.0] - 2026-04-05
 
 ### Added
 
-- **Phase 0: 현황 감사** — 트리거 시 기존 하네스 상태를 먼저 확인하고 신규 구축/기존 확장/운영·유지보수 3분기로 라우팅
-- **기존 확장 Phase 선택 매트릭스** — 에이전트 추가/스킬 추가/아키텍처 변경별 필요 Phase를 명시한 결정표
-- **Phase 3/4 CLAUDE.md 임시 동기화** — 에이전트·스킬 생성 직후 CLAUDE.md에 즉시 반영 (세션 중단 내성)
-- **Phase 5-4: CLAUDE.md 하네스 컨텍스트 등록** — 에이전트 팀 구조·스킬 목록·실행 규칙·디렉토리 구조·변경 이력을 기록. CLAUDE.md vs 오케스트레이터 역할 분담표 포함
-- **Phase 5-5: 후속 작업 지원** — 오케스트레이터 description에 후속 키워드 필수 포함, Phase 0 컨텍스트 확인 단계로 초기/부분재실행/새실행 자동 판별
-- **Phase 5 오케스트레이터 수정 경로** — 기존 확장 시 오케스트레이터를 새로 만들지 않고 수정하는 가이드
-- **Phase 7: 하네스 진화 메커니즘** — 실행 후 피드백 수집 → 피드백 유형별 수정 대상 매핑 → 변경 이력 기록 → 자동 진화 트리거
-- **Phase 7-5: 운영/유지보수 워크플로우** — 현황 감사→점진적 수정→CLAUDE.md 동기화→변경 검증 4단계
-- **description에 운영/유지보수 트리거** — '하네스 점검', '하네스 감사', '하네스 현황', '에이전트/스킬 동기화' 키워드
-- **산출물 체크리스트 강화** — CLAUDE.md 동기화 완료, 변경 이력 기록, Phase 0 컨텍스트 확인 항목 추가
-- 오케스트레이터 템플릿에 Phase 0 (컨텍스트 확인) 추가 — 에이전트 팀/서브 에이전트 모드 모두 적용
-- 오케스트레이터 description 템플릿에 후속 작업 키워드 패턴 포함
+- **Phase 0: Current State Audit** — On trigger, first checks the existing harness state and routes to one of three tracks: new build / extend existing / operate & maintain
+- **Extend Existing Phase Selection Matrix** — Decision table specifying which Phases are required for each scenario: add agent / add skill / change architecture
+- **Phase 3/4 CLAUDE.md Interim Sync** — Immediately reflects newly created agents and skills into CLAUDE.md right after creation (resilient to mid-session interruptions)
+- **Phase 5-4: CLAUDE.md Harness Context Registration** — Records agent team structure, skill list, execution rules, directory structure, and change history. Includes a responsibility split table for CLAUDE.md vs. Orchestrator
+- **Phase 5-5: Follow-up Task Support** — Orchestrator description must include follow-up keywords; Phase 0 context check step auto-identifies initial / partial re-run / new run
+- **Phase 5 Orchestrator Edit Path** — Guide for modifying the existing Orchestrator rather than creating a new one when extending
+- **Phase 7: Harness Evolution Mechanism** — Collect feedback after execution → map feedback types to fix targets → record change history → automated evolution trigger
+- **Phase 7-5: Operations/Maintenance Workflow** — 4-step process: current state audit → incremental fixes → CLAUDE.md sync → change verification
+- **Operations/maintenance triggers in description** — Keywords: 'harness check', 'harness audit', 'harness status', 'agent/skill sync'
+- **Strengthened output checklist** — Added: CLAUDE.md sync complete, change history recorded, Phase 0 context check items
+- Added Phase 0 (context check) to Orchestrator template — applies to both Agent Teams and Subagent modes
+- Follow-up task keyword patterns included in Orchestrator description template
 
 ### Changed
 
-- 핵심 원칙 2개 → 4개로 확장 (CLAUDE.md 등록, 진화 시스템 추가)
-- **"진화 로그" → "변경 이력" 통일** — 이름과 스키마(4컬럼: 날짜/변경내용/대상/사유)를 전 섹션에서 일원화
-- **Phase 1 Step 3** — Phase 0 감사 결과를 기반으로 충돌 분석하도록 변경 (중복 제거)
-- **5-4 CLAUDE.md 템플릿 코드 블록** — 중첩 렌더링 깨짐 수정 (3백틱→4백틱)
-- **역할 분담표 확장** — 스킬 목록, 디렉토리 구조, 변경 이력 행 추가
-- **오케스트레이터 템플릿** — Phase 0 컨텍스트 확인 단계, 후속 작업 키워드 가이드 추가
+- Core principles expanded from 2 to 4 (CLAUDE.md registration, evolution system added)
+- **"Evolution log" → "Change history" unified** — Name and schema (4 columns: date / change / target / reason) consolidated across all sections
+- **Phase 1 Step 3** — Updated to perform conflict analysis based on Phase 0 audit results (removes duplication)
+- **5-4 CLAUDE.md template code block** — Fixed nested rendering breakage (3 backticks → 4 backticks)
+- **Responsibility split table expanded** — Added rows for skill list, directory structure, change history
+- **Orchestrator template** — Added Phase 0 context check step and follow-up task keyword guide
 
 ## [1.0.1] - 2026-03-28
 
 ### Changed
 
-- SKILL.md ↔ references 간 중복 내용 제거 (330줄 → 285줄)
-  - Phase 2-1: 실행 모드 비교표/불릿 → 핵심 원칙 + agent-design-patterns.md 포인터
-  - Phase 2-3: 에이전트 분리 기준 불릿 → 4축 요약 + agent-design-patterns.md 포인터
-  - Phase 3: 에이전트 정의 템플릿 코드블록 → 필수 섹션 나열 + references 포인터
-  - Phase 5-2: 에러 핸들링 5행 테이블 → 핵심 원칙 + orchestrator-template.md 포인터
+- Removed duplicate content between SKILL.md and references (330 lines → 285 lines)
+  - Phase 2-1: Execution mode comparison table/bullets → core principles + agent-design-patterns.md pointer
+  - Phase 2-3: Agent separation criteria bullets → 4-axis summary + agent-design-patterns.md pointer
+  - Phase 3: Agent definition template code block → required sections list + references pointer
+  - Phase 5-2: Error handling 5-row table → core principles + orchestrator-template.md pointer
 
 ## [1.0.0] - 2026-03-27
 
 ### Added
 
-- 6 Phase 워크플로우 기반 하네스 구성 메타 스킬
-- 6가지 에이전트 아키텍처 패턴 (파이프라인, 팬아웃/팬인, 전문가 풀, 생성-검증, 감독자, 계층적 위임)
-- 에이전트 팀 / 서브 에이전트 실행 모드 지원
-- Progressive Disclosure 기반 스킬 생성 가이드
-- 오케스트레이터 템플릿 (에이전트 팀 모드 + 서브 에이전트 모드)
-- QA 에이전트 통합 가이드 (실제 프로젝트 7개 버그 사례 기반)
-- 스킬 테스트/평가 방법론 (With-skill vs Without-skill 비교)
-- 실전 팀 구성 예시 5종 (리서치, 소설, 웹툰, 코드리뷰, 마이그레이션)
+- Harness configuration meta-skill based on a 6-Phase workflow
+- 6 agent architecture patterns (Pipeline, Fan-out/Fan-in, Expert Pool, Generate-Verify, Supervisor, Hierarchical Delegation)
+- Agent Teams / Subagent execution mode support
+- Progressive Disclosure-based skill creation guide
+- Orchestrator templates (Agent Teams mode + Subagent mode)
+- QA agent integration guide (based on 7 real-project bug cases)
+- Skill testing/evaluation methodology (With-skill vs Without-skill comparison)
+- 5 real-world team composition examples (research, novel, webtoon, code review, migration)
